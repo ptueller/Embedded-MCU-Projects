@@ -1,0 +1,129 @@
+
+
+#>00000400          ___heap_size (linker command file)
+#>00000800          ___stack_size (linker command file)
+#>40000000          ___IPSBAR (linker command file)
+#>20000000          ___RAMBAR (linker command file)
+#>00010000          ___RAMBAR_SIZE (linker command file)
+#>00000000          ___FLASHBAR (linker command file)
+#>00080000          ___FLASHBAR_SIZE (linker command file)
+#>2000FFFC          ___SP_AFTER_RESET (linker command file)
+
+# .userram
+
+# .code
+
+# .vectorram
+
+# .vectors
+  20000500 00000400 .vectortable _vect	(exceptions_c.obj)
+
+# .text
+  20000900 00000008 .text   __initialize_system	(startcf_c.obj)
+  20000908 00000008 .text   __call_static_initializers	(startcf_c.obj)
+  20000910 0000006C .text   __copy_rom_section	(startcf_c.obj)
+  2000097C 0000005C .text   __copy_rom_sections_to_ram	(startcf_c.obj)
+  200009D8 0000022A .text   clear_mem	(startcf_c.obj)
+  20000C02 00000096 .text   _startup	(startcf_c.obj)
+  20000C98 00000052 .text   timerInit	(timer_c.obj)
+  20000CEA 00000054 .text   timerDelay	(timer_c.obj)
+  20000D3E 000000CE .text   switchInit	(switch_c.obj)
+  20000E0C 00000026 .text   getSwitchState	(switch_c.obj)
+  20000E32 0000004E .text   debounce0	(switch_c.obj)
+  20000E80 0000004E .text   debounce1	(switch_c.obj)
+  20000ECE 0000002C .text   rngInit	(rng_c.obj)
+  20000EFA 00000024 .text   getRandom	(rng_c.obj)
+  20000F1E 000001E4 .text   pwmInit	(pwm_c.obj)
+  20001102 000000F0 .text   pwmWrite	(pwm_c.obj)
+  200011F2 000000C2 .text   potInit	(pot_c.obj)
+  200012B4 0000005C .text   startPot	(pot_c.obj)
+  20001310 0000003E .text   stopPot	(pot_c.obj)
+  2000134E 000000BE .text   setLevel	(main_c.obj)
+  2000140C 0000014A .text   win	(main_c.obj)
+  20001556 00000116 .text   lose	(main_c.obj)
+  2000166C 00000042 .text   pitISR	(main_c.obj)
+  200016AE 00000050 .text   potISR	(main_c.obj)
+  200016FE 00000042 .text   switchISR	(main_c.obj)
+  20001740 00000330 .text   main	(main_c.obj)
+  20001A70 000000FA .text   @DummyFn1	(int_s.obj)
+  20001A70 00000000 .text   int_config	(int_s.obj)
+  20001A70 000000FA .text   .text	(int_s.obj)
+  20001AB2 00000000 .text   int_inhibit_all	(int_s.obj)
+  20001ACE 00000000 .text   int_mask_src	(int_s.obj)
+  20001B12 00000000 .text   int_unmask_src	(int_s.obj)
+  20001B58 00000000 .text   int_uninhibit_all	(int_s.obj)
+  20001B6A 00000004 .text   TrapHandler_printf	(exceptions_c.obj)
+  20001B6E 00000200 .text   mcf_exception_handler	(exceptions_c.obj)
+  20001D6E 00000020 .text   asm_exception_handler	(exceptions_c.obj)
+  20001D8E 00000008 .text   mcf5xxx_wr_vbr	(exceptions_c.obj)
+  20001D96 00000062 .text   initialize_exceptions	(exceptions_c.obj)
+  20001DF8 0000003E .text   dipInit	(dip_c.obj)
+  20001E36 00000020 .text   pll_init	(TWR-MCF5225X_sysinit_c.obj)
+  20001E56 00000022 .text   scm_init	(TWR-MCF5225X_sysinit_c.obj)
+  20001E78 0000003E .text   __initialize_hardware	(TWR-MCF5225X_sysinit_c.obj)
+#>20001EB8          ___ROM_AT (linker command file)
+#>20001EB8          ___DATA_ROM (linker command file)
+
+# .data
+#>20005000          ___DATA_RAM (linker command file)
+#>20005000          __exception_table_start__ (linker command file)
+# Exception index
+  20005000 00000000         Exception Table Index	()
+#>20005000          __exception_table_end__ (linker command file)
+#>20005000          ___sinit__ (linker command file)
+# Linker generated symbols
+  20005000 00000004         static initializer	(linker generated)
+#>20005004          __START_DATA (linker command file)
+#>20005004          __END_DATA (linker command file)
+#>20005004          __START_SDATA (linker command file)
+#>20005004          __END_SDATA (linker command file)
+#>20005004          ___DATA_END (linker command file)
+#>20005004          __SDA_BASE (linker command file)
+
+# .bss
+#>20005004          ___BSS_START (linker command file)
+#>20005004          __START_SBSS (linker command file)
+#>20005004          __END_SBSS (linker command file)
+#>20005004          __START_BSS (linker command file)
+  20005004 00000002 .bss    @LOCAL@debounce0__Fv@state	(switch_c.obj)
+  20005006 00000002 .bss    @LOCAL@debounce1__Fv@state	(switch_c.obj)
+  20005008 00000004 .bss    switchFlag	(main_c.obj)
+  2000500C 00000004 .bss    potFlag	(main_c.obj)
+  20005010 00000004 .bss    pitFlag	(main_c.obj)
+  20005014 00000004 .bss    level	(main_c.obj)
+  20005018 00000004 .bss    editingColor	(main_c.obj)
+  2000501C 00000004 .bss    channelCount	(main_c.obj)
+  20005020 00000024 .bss    duty	(main_c.obj)
+#>20005044          __END_BSS (linker command file)
+#>20005044          ___BSS_END (linker command file)
+
+# .custom
+#>20005044          ___HEAP_START (linker command file)
+#>20005044          ___heap_addr (linker command file)
+#>20005444          ___HEAP_END (linker command file)
+#>20005444          ___SP_END (linker command file)
+#>20005C44          ___SP_INIT (linker command file)
+#>20000000          ___VECTOR_RAM (linker command file)
+#>20005C44          __SP_INIT (linker command file)
+#>20005444          ___mem_limit (linker command file)
+#>00000010          ___stack_safety (linker command file)
+#>20001EBC          _romp_at (linker command file)
+
+# .romp
+#>20001EBC          __S_romp (linker command file)
+
+
+# Memory map:
+  v_addr   p_addr   size     name
+  20000000 20000000 00000000 .vectorram vectorram
+  20000500 20000500 00000000 .code      code
+  20000500 20000500 00000400 .vectors   code
+  20000900 20000900 000015B8 .text      code
+  20005000 20005000 00000000 .userram   userram
+  20005000 20001EB8 00000004 .data      userram
+  20005004 20005004 00000040 .bss       userram
+  20005044 20005044 00000000 .custom    userram
+  20005044 20001EBC 00000018 .romp      userram
+
+# Link start time: Wed Mar 25 18:25:53 2015
+# Link end time: Wed Mar 25 18:25:53 2015
